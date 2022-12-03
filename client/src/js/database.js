@@ -12,18 +12,17 @@ const initdb = async () =>
     },
   });
 
-
 // GET function
 export const getDb = async (value) => {
-  console.log('Get request for jateDB');
+  console.log("Get request for jateDB");
   // connect to DB and version we want to use
-  const jateDb = await openDB('jate', 1);
+  const jateDb = await openDB("jate", 1);
   // New readwrite transaction.
-  const tx = jateDb.transaction('jate', 'readwrite');
+  const tx = jateDb.transaction("jate", "readwrite");
   // Open the object store
-  const objStore = tx.objectStore('jate');
+  const objStore = tx.objectStore("jate");
   // use getAll() method to get all content in the DB
-  const req = objStore.getAll()
+  const req = objStore.getAll();
   // confirm the data was fetched
   const result = await req;
   console.log(result);
@@ -31,18 +30,18 @@ export const getDb = async (value) => {
 
 // PUT function
 export const putDb = async (id, value) => {
-  console.log('PUT request to update the jateDB');
+  console.log("PUT request to update the jateDB");
   // connect to DB and version we want to use
-  const jateDb = await openDB('jate', 1);
+  const jateDb = await openDB("jate", 1);
   // New readwrite transaction.
-  const tx = jateDb.transaction('jate', 'readwrite');
+  const tx = jateDb.transaction("jate", "readwrite");
   // Open the object store
-  const objStore = tx.objectStore('jate');
+  const objStore = tx.objectStore("jate");
   // Use put() method to pass in content
-  const req = objStore.put({ id, value })
+  const req = objStore.put({ id, value });
   // Confirm the data was added
   const result = await req;
-  console.log('Data saved to the database', result);
+  console.log("Data saved to the database", result);
 };
 
 initdb();
